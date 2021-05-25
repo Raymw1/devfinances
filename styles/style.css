@@ -1,0 +1,81 @@
+/* =============   GLOBAL  =============  */
+:root {
+    --dark-green: #2D4A22;
+    --dark-blue: #363f5f;
+    --green: #49AA26;
+    --light-green: #3dd705;
+    --red: #e92929;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 93.75%;
+}
+
+body {
+    background: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: min(90vw, 800px);
+    margin: auto;
+}
+
+/* =============   HEADER  =============  */
+header {
+    background-color: var(--dark-green);
+    padding: 2rem 0 10rem;
+    text-align: center;
+}
+
+/* =============   BALANCE  =============  */
+#balance {
+    margin-top: -8rem;
+}
+
+#balance h2 {
+    color: #fff;
+    margin-top: 0;
+}
+
+
+/* =============   CARDS  =============  */
+.card {
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.25rem;
+    color: var(--dark-blue);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: 1s;
+}
+
+.card:hover {
+    box-shadow: none;
+    transition: 1s;
+}
+
+.card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card p {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-top: 1rem;
+}
+
+.card.total {
+    color: #fff;
+    background-color: var(--green);
+}
