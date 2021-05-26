@@ -117,7 +117,11 @@ header {
 }
 
 /* =============   TRANSACTIONS   =============  */
-
+#transaction {
+    width: 100%;
+    display: block; /* RESPONSIVE */
+    overflow-x: auto;
+}
 
 
 #data-table {
