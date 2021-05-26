@@ -5,6 +5,7 @@
     --green: #49AA26;
     --light-green: #3dd705;
     --red: #e92929;
+    --ice: #969cb3;
 }
 
 * {
@@ -26,6 +27,20 @@ body {
     width: min(90vw, 800px);
     margin: auto;
 }
+
+/* =============   SCREEN READER  =============  */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 
 /* =============   HEADER  =============  */
 header {
@@ -79,3 +94,56 @@ header {
     color: #fff;
     background-color: var(--green);
 }
+
+/* =============   TRANSACTIONS   =============  */
+
+
+
+#data-table {
+    width: 100%;
+    text-align: left;
+    color: var(--ice);
+    border-spacing: 0 0.5rem;
+}
+
+table thead th:first-child, table thead td:first-child{
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+table thead th:last-child, table thead td:last-child{
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+
+table th {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    font-weight: normal;
+}
+
+table tbody tr {
+    opacity: 0.7;
+    transition: 300ms;
+}
+
+table tbody tr:hover {
+    opacity: 1;
+    transition: 300ms;
+}
+
+table tbody td {
+    background-color: #fff;
+    padding: 1rem 2rem;
+}
+
+table tbody td.description {
+    color: var(--dark-blue);
+}
+
+table tbody td.income {
+    color: #12a454;
+}
+
+table tbody td.expense {
+    color: var(--red);
+}
+
