@@ -42,6 +42,27 @@ body {
 }
 
 
+/* =============   LINKS AND BUTTONS  =============  */
+.button.new, .founder {
+    color: var(--green);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    transition: 400ms;
+}
+
+.button.new:hover, .founder:hover {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: 400ms;
+}
+
+.founder {
+    font-weight: bold;
+    opacity: 0.9;
+}
+
+
+
 /* =============   HEADER  =============  */
 header {
     background-color: var(--dark-green);
@@ -145,5 +166,16 @@ table tbody td.income {
 
 table tbody td.expense {
     color: var(--red);
+}
+
+/* =============   FOOTER  =============  */
+footer {
+    text-align: center;
+    padding: 4rem 0 2rem;
+}
+
+footer p span{
+    color: var(--dark-blue);
+    opacity: 0.6;
 }
 
