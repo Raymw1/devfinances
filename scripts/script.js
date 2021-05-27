@@ -33,8 +33,9 @@ const Transaction = {
         Transaction.all.push(transaction);
         app.reload();
     },
-    remove() {
-
+    remove(index) {
+        Transaction.all.splice(index, 1);
+        app.reload();
     },
     incomes() {
         let income = 0;
