@@ -35,16 +35,11 @@ const Transaction = {
         Transaction.all.splice(index, 1);
         app.reload();
     },
-    edit(index) {
-        modal.open();
-        document.querySelector("#form h2").innerHTML = "Editar Transação";
-        document.querySelector("button").innerText = "Editar"
-        form.description.value = Transaction.all[index].description;
-        form.amount.value = Transaction.all[index].amount;
-        let date = Transaction.all[index].date.split("/");
-        date = `${date[2]}-${date[1]}-${date[0]}`;
-        form.date.value = date;
-
+    edit(index, transaction) {
+        Transaction.all[index].description = transaction.description;
+        Transaction.all[index].amount = transaction.amount;
+        Transaction.all[index].date = transaction.date;
+        app.reload();
     },
     incomes() {
         let income = 0;
@@ -82,7 +77,7 @@ const DOM = {
         <td class="description">${transaction.description}</td>
         <td class="${CSSClass}">${amount}</td>
         <td class="date">${transaction.date }</td>
-        <td><img onclick="Transaction.edit(${index})" class="svg" src="assets/edit.svg" alt="Editar transação"></td>
+        <td><img onclick="form.editModal(${index})" class="svg" src="assets/edit.svg" alt="Editar transação"></td>
         <td><img onclick="Transaction.remove(${index})" class="svg" src="assets/minus.svg  " alt="Remover transação"></td>`;
         return html;
     },
@@ -145,12 +140,25 @@ const form = {
         date = utils.formatDate(date);
         return  { description, amount, date };
     },
+    editModal(index) {
+        modal.open();
+        document.querySelector("#form h2").innerHTML = "Editar Transação";
+        document.querySelector("button").innerText = "Editar";
+        form.description.value = Transaction.all[index].description;
+        form.amount.value = Transaction.all[index].amount / 100;
+        let date = Transaction.all[index].date.split("/");
+        date = `${date[2]}-${date[1]}-${date[0]}`;
+        form.date.value = date;
+        document.querySelector("form").setAttribute("onsubmit", `form.submit(event, ${index})`);
+    },
     clearFields() {
         setTimeout(() => {
             document.querySelector("#form h2").innerHTML = "Nova Transação";
             form.description.value = "";
             form.amount.value = "";
             form.date.value = "";
+            document.querySelector("form").setAttribute("onsubmit", "form.submit(event)");
+            document.querySelector("button").innerText = "Salvar";
         }, 400)
 
     },
@@ -158,8 +166,13 @@ const form = {
         event.preventDefault();
         try {
             form.validateFields();
-            const transaction = form.formatValues();
-            Transaction.add(transaction);
+            let transaction = form.formatValues();
+            if (index != undefined) {
+                Transaction.edit(index, transaction);
+            }
+            else {
+                Transaction.add(transaction);
+            }
             form.clearFields();
             modal.close();
         } catch(error) {
