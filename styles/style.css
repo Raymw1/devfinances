@@ -215,6 +215,10 @@ table tbody td.expense {
     color: var(--red);
 }
 
+img.svg {
+    cursor: pointer;
+}
+
 /* =============   FOOTER  =============  */
 footer {
     text-align: center;

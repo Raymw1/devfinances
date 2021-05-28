@@ -4,6 +4,7 @@ const modal = {
         document.querySelector(".modal-overlay").classList.add("active");
     },
     close() {
+        form.clearFields();
         document.querySelector(".modal-overlay").classList.remove("active");
     }
 }
@@ -33,6 +34,17 @@ const Transaction = {
     remove(index) {
         Transaction.all.splice(index, 1);
         app.reload();
+    },
+    edit(index) {
+        modal.open();
+        document.querySelector("#form h2").innerHTML = "Editar Transação";
+        document.querySelector("button").innerText = "Editar"
+        form.description.value = Transaction.all[index].description;
+        form.amount.value = Transaction.all[index].amount;
+        let date = Transaction.all[index].date.split("/");
+        date = `${date[2]}-${date[1]}-${date[0]}`;
+        form.date.value = date;
+
     },
     incomes() {
         let income = 0;
@@ -70,7 +82,8 @@ const DOM = {
         <td class="description">${transaction.description}</td>
         <td class="${CSSClass}">${amount}</td>
         <td class="date">${transaction.date }</td>
-        <td><img onclick="Transaction.remove(${index})" src="assets/minus.svg  " alt="Remover transação"></td>`;
+        <td><img onclick="Transaction.edit(${index})" class="svg" src="assets/edit.svg" alt="Editar transação"></td>
+        <td><img onclick="Transaction.remove(${index})" class="svg" src="assets/minus.svg  " alt="Remover transação"></td>`;
         return html;
     },
     updateBalance() {
@@ -130,15 +143,18 @@ const form = {
         let { description, amount, date } = form.getValues();
         amount = utils.formatAmout(amount);
         date = utils.formatDate(date);
-        console.log(description, amount, date)
         return  { description, amount, date };
     },
     clearFields() {
-        form.description.value = "";
-        form.amount.value = "";
-        form.date.value = "";
+        setTimeout(() => {
+            document.querySelector("#form h2").innerHTML = "Nova Transação";
+            form.description.value = "";
+            form.amount.value = "";
+            form.date.value = "";
+        }, 400)
+
     },
-    submit(event) {
+    submit(event, index) {
         event.preventDefault();
         try {
             form.validateFields();
