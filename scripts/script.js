@@ -9,6 +9,16 @@ const modal = {
     }
 }
 
+/* =============   DARK   =============  */
+const dark = {
+    enable() {
+
+    },
+    disable() {
+        
+    }
+}
+
 // function openCloseForm() {   // ====== ALTERNATE FUNCTION=========
 //     document.querySelector(".modal-overlay").classList.toggle("active");
 // }
