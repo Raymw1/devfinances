@@ -23,9 +23,11 @@ html {
 body {
     background: var(--ice);
     font-family: 'Poppins', sans-serif;
+    transition: 1s;
 }
 
 body.dark, .modal.dark {
+    transition: 1s;
     background: var(--dark);
 }
 
@@ -126,7 +128,8 @@ header img {
 }
 
 header a {
-    margin-right: 20px;
+    position: absolute;
+    margin-right: 5%;
 }
 
 /* =============   BALANCE  =============  */
@@ -248,6 +251,7 @@ footer p span{
 
 footer p span.dark{
     color: var(--ice);
+    transition: 1s;
 }
 
 /* =============   MODAL  =============  */
@@ -317,7 +321,6 @@ input:hover {
 }
 
 .dark input:focus {
-    outline: 1px solid var(--green);
     box-shadow: 0 0 3pt 2pt var(--green);
     transition: 1s;
 }

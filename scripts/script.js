@@ -12,10 +12,22 @@ const modal = {
 /* =============   DARK   =============  */
 const dark = {
     enable() {
-
+        const imgElement = document.querySelector("header a")
+        document.querySelector("body").classList.add("dark");
+        document.querySelector(".modal").classList.add("dark");
+        document.querySelector("footer span").classList.add("dark");
+        const sun = `<img src="assets/sun.png" width="30" alt="Light mode">`
+        imgElement.innerHTML = sun
+        imgElement.setAttribute("onclick", "dark.disable()")
     },
     disable() {
-        
+        const imgElement = document.querySelector("header a")
+        document.querySelector("body").classList.remove("dark");
+        document.querySelector(".modal").classList.remove("dark");
+        document.querySelector("footer span").classList.remove("dark");
+        const moon = `<img src="assets/moon.png" width="30" alt="Dark mode">`
+        imgElement.innerHTML = moon
+        imgElement.setAttribute("onclick", "dark.enable()")
     }
 }
 
